@@ -1,16 +1,51 @@
 /* src/styles/global.css */
-
-/* 这一行就是 Tailwind v4 的全部 */
 @import "tailwindcss";
 
-/* 这里可以定义设计师喜欢的字体或变量 */
 @theme {
     --font-sans: "Inter", system-ui, sans-serif;
-    --color-brand: #2563eb; /* 自定义品牌色，class="text-brand" 可直接用 */
 }
 
-/* 全局基础样式 */
+/* 深色主题背景 */
 html, body {
     height: 100%;
-    background-color: #fafafa; /* 极浅灰背景，更有质感 */
+}
+
+/* 平滑滚动 + 自定义滚动条 */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Webkit 滚动条美化 */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(15, 23, 42, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #a78bfa 0%, #06b6d4 100%);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #c4b5fd 0%, #22d3ee 100%);
+}
+
+/* 鼠标跟随发光效果占位 */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+/* 自定义渐变文本 */
+.gradient-text {
+    background: linear-gradient(to right, #a78bfa, #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }

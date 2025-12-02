@@ -1,10 +1,11 @@
 ---
-// 1. 引入全局 CSS
 import '../styles/global.css';
-
-// 2. 引入 Solid 组件
 import Navbar from '../components/Navbar';
 import WorkGrid from '../components/WorkGrid';
+import HeroSection from '../components/HeroSection';
+import AboutSection from '../components/AboutSection';
+import SkillsSection from '../components/SkillsSection';
+import ContactSection from '../components/ContactSection';
 ---
 
 <html lang="en" class="scroll-smooth">
@@ -13,27 +14,35 @@ import WorkGrid from '../components/WorkGrid';
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Designer Portfolio</title>
+		<meta name="description" content="Tianyeeeeee - 创意开发者，制作有趣的交互体验" />
+		<meta property="og:title" content="Tianyeeeeee - 创意开发者" />
+		<meta property="og:description" content="做有趣的东西。代码 + 创意 = ✨" />
+		<meta property="og:type" content="website" />
+		<title>Tianyeeeeee - 做有趣的东西</title>
 	</head>
-	<body>
+	<body class="bg-gradient-to-br from-slate-50 via-white to-slate-50 text-slate-900">
         <Navbar client:load />
 
-        <main class="pt-32">
-            <section class="max-w-7xl mx-auto px-6 mb-12">
-                <h1 class="text-6xl md:text-8xl font-black tracking-tighter mb-6 leading-[0.9]">
-                    CREATIVE<br>
-                    <span class="text-gray-300">DEVELOPER.</span>
-                </h1>
-                <p class="text-xl text-gray-500 max-w-xl">
-                    专注于打造高性能、高交互的数字体验。这里展示了 Astro 与 SolidJS 结合的力量。
-                </p>
-            </section>
+        <main class="pt-32 pb-20">
+            <!-- 🎨 年轻个性化 Hero -->
+            <HeroSection client:load />
 
+            <!-- 🎬 作品集 -->
             <WorkGrid client:visible />
+
+            <!-- 📚 关于我 + Timeline -->
+            <AboutSection client:visible />
+
+            <!-- 🛠️ 技能与Vibe -->
+            <SkillsSection client:visible />
+
+            <!-- 💌 联系 + 订阅 -->
+            <ContactSection client:visible />
         </main>
         
-        <footer class="py-12 text-center text-gray-400 text-sm">
-            © 2025 Design & Code. Built with Astro + Solid + Tailwind v4.
+        <footer class="border-t border-slate-200 py-8 text-center text-slate-500 text-sm">
+            <p class="mb-2">Made with ❤️ & ✨ using Astro + Solid + Tailwind</p>
+            <p>© 2025 Tianyeeeeee. Do interesting things.</p>
         </footer>
 	</body>
 </html>
