@@ -1,17 +1,16 @@
 /* src/styles/global.css */
 
 /* 这一行就是 Tailwind v4 的全部 */
-@import 'tailwindcss';
+@import "tailwindcss";
 
 /* 这里可以定义设计师喜欢的字体或变量 */
 @theme {
-    --font-sans: 'Inter', system-ui, sans-serif;
+    --font-sans: "Inter", system-ui, sans-serif;
     --color-brand: #2563eb; /* 自定义品牌色，class="text-brand" 可直接用 */
 }
 
 /* 全局基础样式 */
-html,
-body {
+html, body {
     height: 100%;
     background-color: #fafafa; /* 极浅灰背景，更有质感 */
 }
