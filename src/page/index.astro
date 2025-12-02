@@ -1,0 +1,39 @@
+---
+// 1. 引入全局 CSS
+import '../styles/global.css';
+
+// 2. 引入 Solid 组件
+import Navbar from '../components/Navbar';
+import WorkGrid from '../components/WorkGrid';
+---
+
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Designer Portfolio</title>
+	</head>
+	<body>
+        <Navbar client:load />
+
+        <main class="pt-32">
+            <section class="max-w-7xl mx-auto px-6 mb-12">
+                <h1 class="text-6xl md:text-8xl font-black tracking-tighter mb-6 leading-[0.9]">
+                    CREATIVE<br>
+                    <span class="text-gray-300">DEVELOPER.</span>
+                </h1>
+                <p class="text-xl text-gray-500 max-w-xl">
+                    专注于打造高性能、高交互的数字体验。这里展示了 Astro 与 SolidJS 结合的力量。
+                </p>
+            </section>
+
+            <WorkGrid client:visible />
+        </main>
+        
+        <footer class="py-12 text-center text-gray-400 text-sm">
+            © 2025 Design & Code. Built with Astro + Solid + Tailwind v4.
+        </footer>
+	</body>
+</html>
