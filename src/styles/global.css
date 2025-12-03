@@ -6,7 +6,8 @@
   --color-bg: #050505;
   --color-card: #0a0a0a;
   --color-border: #1f1f1f;
-  --color-accent: #22c55e; /* Terminal Green */
+  --color-accent: #22c55e;
+  /* Terminal Green */
 }
 
 /* 强制深色模式 */
@@ -30,21 +31,53 @@ body {
 
 /* 光标闪烁动画 */
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
 }
+
 .cursor-blink {
   animation: blink 1s step-end infinite;
 }
 
 /* 隐藏滚动条但保留功能 */
 ::-webkit-scrollbar {
-    width: 6px;
+  width: 6px;
 }
+
 ::-webkit-scrollbar-track {
-    background: var(--color-bg);
+  background: var(--color-bg);
 }
+
 ::-webkit-scrollbar-thumb {
-    background: #333;
-    border-radius: 3px;
+  background: #333;
+  border-radius: 3px;
+}
+
+/* Retro Mode CSS */
+.retro-mode {
+  filter: sepia(0.3) contrast(1.2) brightness(1.1);
+  /* 强制使用像素字体 (可选) */
+  font-family: "Courier New", Courier, monospace !important;
+}
+
+/* 扫描线效果 */
+.retro-mode::before {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  z-index: 9999;
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
 }

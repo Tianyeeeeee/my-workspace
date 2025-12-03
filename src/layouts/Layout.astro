@@ -1,6 +1,7 @@
 ---
-import { ViewTransitions } from 'astro:transitions';
-import '../styles/global.css';
+import { ClientRouter } from "astro:transitions";
+import "../styles/global.css";
+import EasterEgg from "../components/EasterEgg";
 
 interface Props {
 	title: string;
@@ -17,21 +18,63 @@ const { title } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-		<ViewTransitions />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=JetBrains+Mono:wght@400;500&display=swap"
+			rel="stylesheet"
+		/>
+		<ClientRouter />
 	</head>
 	<body>
 		<slot />
-        
-        <script>
-            console.log(
-                "%c SYSTEM READY %c v1.0.0 \n%c Welcome to the source code. Built with Astro + Solid.",
-                "background:#22c55e; color:black; padding: 2px 5px; border-radius: 2px; font-weight:bold;",
-                "color: #666; font-family: monospace;",
-                "color: #a3a3a3; font-family: monospace; margin-top: 5px;"
-            );
-        </script>
+		<EasterEgg client:only="solid-js" />
+		<script>
+			console.log(
+				"%c SYSTEM READY %c v1.0.0 \n%c Welcome to the source code. Built with Astro + Solid.",
+				"background:#22c55e; color:black; padding: 2px 5px; border-radius: 2px; font-weight:bold;",
+				"color: #666; font-family: monospace;",
+				"color: #a3a3a3; font-family: monospace; margin-top: 5px;",
+			);
+		</script>
+
+		<script>
+			// 1. 定义 ASCII Art (名字: TIANYE)
+			const asciiArt = `
+████████╗██╗ ██████╗   ███╗    ██╗██╗     ██╗ ███████╗   
+╚══██╔══╝██║██╔═══██╗████╗   ██║╚██╗ ██╔╝██╔════╝   
+	  ██║     ██║████████║██╔██╗ ██║ ╚████╔╝ █████╗  
+	  ██║     ██║██╔═══██║██║╚██╗██║  ╚██╔╝  ██╔══╝  
+	  ██║     ██║██║      ██║██║ ╚████║     ██║   ███████╗
+	  ╚═╝     ╚═╝╚═╝      ╚═╝╚═╝  ╚═══╝      ╚═╝   ╚══════╝
+`;
+
+			// 2. 定义样式
+			const styles = [
+				"color: #22c55e", // 绿色 (Terminal Green)
+				"font-family: monospace",
+				"font-weight: bold",
+				"font-size: 14px",
+				"text-shadow: 2px 2px 0px rgba(0,0,0,0.5)",
+			].join(";");
+
+			const infoStyle = [
+				"color: #a3a3a3",
+				'font-family: "JetBrains Mono", monospace',
+				"font-size: 12px",
+				"padding: 10px 0",
+			].join(";");
+
+			// 3. 输出
+			console.log(`%c${asciiArt}`, styles);
+			console.log(
+				`%c👋 嘿！看来你也是个喜欢看源码的工程师。\n\n🚀 本网站技术栈：Astro + SolidJS + Tailwind v4 + WebGL\n\n📫 觉得有意思？我们聊聊：hello@tianye.dev`,
+				infoStyle,
+			);
+			console.log(
+				"%c----------------------------------------",
+				"color: #333",
+			);
+		</script>
 	</body>
 </html>

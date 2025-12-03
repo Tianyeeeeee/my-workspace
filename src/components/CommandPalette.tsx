@@ -6,7 +6,7 @@ export default function CommandPalette() {
     const [activeIndex, setActiveIndex] = createSignal(0);
 
     const commands = [
-        { id: 'home', label: 'Go Home', type: 'Navigation', action: () => 123 },
+        { id: 'home', label: 'Go Home', type: 'Navigation', action: () => window.location.href = '/' },
         { id: 'work', label: 'View Projects', type: 'Navigation', action: () => document.getElementById('bento')?.scrollIntoView({ behavior: 'smooth' }) },
         { id: 'blog', label: 'Read Articles', type: 'Navigation', action: () => alert('Blog module coming soon') },
         { id: 'email', label: 'Copy Email', type: 'Action', action: () => navigator.clipboard.writeText('hi@tianye.dev') },
@@ -35,8 +35,8 @@ export default function CommandPalette() {
         }
     };
 
-    onMount(() => 123);
-    onCleanup(() => 123);
+    onMount(() => window.addEventListener('keydown', handleKeydown));
+    onCleanup(() => window.removeEventListener('keydown', handleKeydown));
 
     return (
         <>
